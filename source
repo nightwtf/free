@@ -1,7 +1,6 @@
 local UserInputService = game:GetService("UserInputService")
 local TweenService = game:GetService("TweenService")
 local RunService = game:GetService("RunService")
-local CloseBind = Enum.KeyCode.RightControl
 local players = game:GetService("Players")
 local coregui = game:GetService("CoreGui")
 
@@ -11,9 +10,8 @@ local camera = game.Workspace.CurrentCamera
 
 local lib = {}
 
-function lib:CreateWindow(name, closebind)
+function lib:CreateWindow(name,)
     name = name or "<b>INTERN</b> Library"
-    CloseBind = closebind or Enum.KeyCode.RightControl
     cursor = true
     cursorimg = "https://tr.rbxcdn.com/35a8c6589acfaed0d7083838b8f6032a/420/420/Decal/Png"
 
@@ -168,25 +166,7 @@ function lib:CreateWindow(name, closebind)
     tab.CanvasSize = UDim2.new(0,0,0,tab.ListLayout.AbsoluteContentSize.Y)
 	tab.ChildAdded:Connect(function()
 		tab.CanvasSize = UDim2.new(0,0,0,tab.ListLayout.AbsoluteContentSize.Y + 55 + tab.ListLayout.Padding.Offset)
-	end) 
-
-    local uitoggled = true
-    UserInputService.InputBegan:Connect(
-        function(io, p)
-            if io.KeyCode == CloseBind then
-                if uitoggled == false then
-                    main_holder:TweenSize(UDim2.new(0, 0, 0, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .6, true)
-                    uitoggled = true
-                    wait(.5)
-                    intern_hub.Enabled = false
-                else
-                    main_holder:TweenSize(UDim2.new(0, 400, 0, 300), Enum.EasingDirection.In, Enum.EasingStyle.Quart, .6, true)
-                    intern_hub.Enabled = true
-                    uitoggled = false
-                end
-            end
-        end
-    )
+	end)
 
     local dragger = {}; do
         local mouse        = game:GetService("Players").LocalPlayer:GetMouse();
@@ -922,6 +902,42 @@ function lib:CreateWindow(name, closebind)
                 end)
             end
             coroutine.wrap(PACSJVV_fake_script)()
+        end
+
+        function types:Label(text)
+            text = text or "Label"
+            c=c + 1
+
+            local Label = Instance.new("TextButton")
+            local LabelCorner = Instance.new("UICorner")
+            local LabelTitle = Instance.new("TextLabel")
+
+            Label.Name = "Button"
+            Label.Parent = tab
+            Label.BackgroundColor3 = Color3.fromRGB(34, 34, 34)
+            Label.Size = UDim2.new(0, 375, 0, 42)
+            Label.AutoButtonColor = false
+            Label.Font = Enum.Font.SourceSans
+            Label.Text = ""
+            Label.TextColor3 = Color3.fromRGB(0, 0, 0)
+            Label.TextSize = 14.000
+            Label.LayoutOrder = c
+
+            LabelCorner.CornerRadius = UDim.new(0, 5)
+            LabelCorner.Name = "ButtonCorner"
+            LabelCorner.Parent = Label
+
+            LabelTitle.Name = "ButtonTitle"
+            LabelTitle.Parent = Label
+            LabelTitle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+            LabelTitle.BackgroundTransparency = 1.000
+            LabelTitle.Position = UDim2.new(0.0358126722, 0, 0, 0)
+            LabelTitle.Size = UDim2.new(0, 187, 0, 42)
+            LabelTitle.Font = Enum.Font.Gotham
+            LabelTitle.Text = text
+            LabelTitle.TextColor3 = Color3.fromRGB(255, 255, 255)
+            LabelTitle.TextSize = 14.000
+            LabelTitle.TextXAlignment = Enum.TextXAlignment.Left
         end
     return types
 end
