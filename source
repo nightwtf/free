@@ -657,7 +657,9 @@ function lib:CreateWindow(name)
             DropLayout.Parent = DropItemHolder
             DropLayout.SortOrder = Enum.SortOrder.LayoutOrder
 
-            local function Refresh(newList)
+            local dropper = {}
+
+            function dropper:Refresh(newList)
                 newList = newList or {}
                     for i,v in next, DropItemHolder:GetChildren() do
                         if v.Name == "Item" then
@@ -1016,9 +1018,8 @@ function lib:CreateWindow(name)
             LabelTitle.TextColor3 = Color3.fromRGB(255, 255, 255)
             LabelTitle.TextSize = 14.000
             LabelTitle.TextXAlignment = Enum.TextXAlignment.Left
-        end
-
+        return dropper
+    end
     return types
 end
-
 return lib
