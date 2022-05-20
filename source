@@ -734,6 +734,7 @@ function lib:CreateWindow(name)
                         DropItemHolder.CanvasSize = UDim2.new(0, 0, 0, DropLayout.AbsoluteContentSize.Y)
                         tab.CanvasSize = UDim2.new(0, 0, 0, ListLayout.AbsoluteContentSize.Y + 20)
                     end
+                end
 
         DropdownBtn.MouseButton1Click:Connect(
                 function()
