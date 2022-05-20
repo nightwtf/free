@@ -393,13 +393,13 @@ function lib:CreateWindow(name, closebind)
                         TweenService:Create(
                             FrameToggle1,
                             TweenInfo.new(.35, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-                            {BackgroundColor3 = Color3.fromRGB(38, 38, 38)}
+                            {BackgroundColor3 = Color3.fromRGB(44, 120, 224)}
                         ):Play()
                     else
                         TweenService:Create(
                             FrameToggle1,
                             TweenInfo.new(.35, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-                            {BackgroundColor3 = Color3.fromRGB(44, 120, 224)}
+                            {BackgroundColor3 = Color3.fromRGB(38,38,38)}
                         ):Play()
                     end
                     toggled = not toggled
