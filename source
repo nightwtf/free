@@ -307,6 +307,7 @@ function lib:CreateWindow(name, closebind)
         Section.TextColor3 = Color3.fromRGB(180,180,180)
         Section.TextSize = 14.000
         Section.TextXAlignment = "Left"
+        Section.TextYAlignment = "Bottom"
     
         UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(0, 0, 0)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(255, 255, 255))}
         UIGradient.Offset = Vector2.new(0.200000003, 0.400000006)
