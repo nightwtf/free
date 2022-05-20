@@ -430,7 +430,7 @@ function lib:CreateWindow(name, closebind)
         local BindText = Instance.new("TextLabel")
 
         Bind.Name = "Bind"
-        Bind.Parent = Tab
+        Bind.Parent = tab
         Bind.BackgroundColor3 = Color3.fromRGB(34, 34, 34)
         Bind.Size = UDim2.new(0, 375, 0, 42)
         Bind.AutoButtonColor = false
