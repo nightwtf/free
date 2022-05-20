@@ -791,6 +791,9 @@ function lib:CreateWindow(name, closebind)
             max = max or 100
             callback = callback or function() end
             c = c + 1
+
+            local PresetColor = Color3.fromRGB(44, 120, 224)
+
             local dragging = false
             local Slider = Instance.new("TextButton")
             local SliderCorner = Instance.new("UICorner")
