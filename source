@@ -781,6 +781,7 @@ function lib:CreateWindow(name, closebind)
 
                 DropItemHolder.CanvasSize = UDim2.new(0, 0, 0, DropLayout.AbsoluteContentSize.Y)
             end
+            tab.CanvasSize = UDim2.new(0, 0, 0, ListLayout.AbsoluteContentSize.Y)
         end
     return types
 end
