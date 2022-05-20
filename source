@@ -906,7 +906,7 @@ function lib:CreateWindow(name,)
 
         function types:Label(text)
             text = text or "Label"
-            c=c + 1
+            c = c + 1
 
             local Label = Instance.new("TextButton")
             local LabelCorner = Instance.new("UICorner")
