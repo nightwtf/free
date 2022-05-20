@@ -807,7 +807,7 @@ function lib:CreateWindow(name, closebind)
             Slider.Parent = tab
             Slider.BackgroundColor3 = Color3.fromRGB(34, 34, 34)
             Slider.Position = UDim2.new(-0.48035714, 0, -0.570532918, 0)
-            Slider.Size = UDim2.new(0, 363, 0, 60)
+            Slider.Size = UDim2.new(0, 375, 0, 60)
             Slider.AutoButtonColor = false
             Slider.Font = Enum.Font.SourceSans
             Slider.Text = ""
@@ -907,6 +907,21 @@ function lib:CreateWindow(name, closebind)
                     end
                 end
             )
+            local function PACSJVV_fake_script()
+                local script = Instance.new('LocalScript', Slider)
+        
+                script.Parent.MouseEnter:Connect(function()
+                    game:GetService("TweenService"):Create(script.Parent, TweenInfo.new(0.15), {
+                        BackgroundColor3 = Color3.fromRGB(38,38,38)
+                    }):Play()
+                end)
+                script.Parent.MouseLeave:Connect(function()
+                    game:GetService("TweenService"):Create(script.Parent, TweenInfo.new(0.15), {
+                        BackgroundColor3 = Color3.fromRGB(34, 34, 34)
+                    }):Play()
+                end)
+            end
+            coroutine.wrap(PACSJVV_fake_script)()
         end
     return types
 end
