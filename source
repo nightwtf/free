@@ -167,7 +167,7 @@ function lib:CreateWindow(name, closebind)
 
     tab.CanvasSize = UDim2.new(0,0,0,tab.ListLayout.AbsoluteContentSize.Y)
 	tab.ChildAdded:Connect(function()
-		tab.CanvasSize = UDim2.new(0,0,0,tab.ListLayout.AbsoluteContentSize.Y + 50 + tab.ListLayout.Padding.Offset)
+		tab.CanvasSize = UDim2.new(0,0,0,tab.ListLayout.AbsoluteContentSize.Y + 55 + tab.ListLayout.Padding.Offset)
 	end) 
 
     local uitoggled = true
@@ -905,7 +905,6 @@ function lib:CreateWindow(name, closebind)
                     end
                 end
             )
-            tab.CanvasSize = UDim2.new(0, 0, 0, TabLayout.AbsoluteContentSize.Y+20)
             local function PACSJVV_fake_script()
                 local script = Instance.new('LocalScript', Slider)
         
