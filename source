@@ -30,13 +30,13 @@ function lib:CreateWindow(name, closebind)
             cursor.Size = Vector2.new(26, 26)
             cursor.Visible = UserInputService.MouseEnabled
             cursor.Rounding = 0
-            cursor.Position = Vector2.new(mouse.X - 20, mouse.Y)
+            cursor.Position = Vector2.new(mouse.X - 1, mouse.Y + 29)
         end)
         if success and cursor then
             UserInputService.InputChanged:Connect(function(input)
                 if UserInputService.MouseEnabled then
                     if input.UserInputType == Enum.UserInputType.MouseMovement then
-                        cursor.Position = Vector2.new(input.Position.X - 20, input.Position.Y)
+                        cursor.Position = Vector2.new(input.Position.X - 1, input.Position.Y + 29)
                     end
                 end
             end)
