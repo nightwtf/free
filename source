@@ -15,7 +15,7 @@ function lib:CreateWindow(name, closebind)
     name = name or "<b>INTERN</b> Library"
     CloseBind = closebind or Enum.KeyCode.RightControl
     cursor = true
-    cursorimg = "https://t0.rbxcdn.com/8da41f002bdb42ecf6ef34c4c8bcec00"
+    cursorimg = "https://tr.rbxcdn.com/35a8c6589acfaed0d7083838b8f6032a/420/420/Decal/Png"
 
     for i,v in pairs(game:GetService("CoreGui"):GetChildren()) do
         if v.Name == "intern" then
@@ -27,16 +27,16 @@ function lib:CreateWindow(name, closebind)
         local success = pcall(function() 
             cursor = Drawing.new("Image")
             cursor.Data = game:HttpGet(cursorimg)
-            cursor.Size = Vector2.new(64, 64)
+            cursor.Size = Vector2.new(26, 26)
             cursor.Visible = UserInputService.MouseEnabled
             cursor.Rounding = 0
-            cursor.Position = Vector2.new(mouse.X - 32, mouse.Y + 6)
+            cursor.Position = Vector2.new(mouse.X - 20, mouse.Y)
         end)
         if success and cursor then
             UserInputService.InputChanged:Connect(function(input)
                 if UserInputService.MouseEnabled then
                     if input.UserInputType == Enum.UserInputType.MouseMovement then
-                        cursor.Position = Vector2.new(input.Position.X - 32, input.Position.Y + 7)
+                        cursor.Position = Vector2.new(input.Position.X - 20, input.Position.Y)
                     end
                 end
             end)
