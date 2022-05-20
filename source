@@ -10,7 +10,7 @@ local camera = game.Workspace.CurrentCamera
 
 local lib = {}
 
-function lib:CreateWindow(name,)
+function lib:CreateWindow(name)
     name = name or "<b>INTERN</b> Library"
     cursor = true
     cursorimg = "https://tr.rbxcdn.com/35a8c6589acfaed0d7083838b8f6032a/420/420/Decal/Png"
@@ -939,6 +939,7 @@ function lib:CreateWindow(name,)
             LabelTitle.TextSize = 14.000
             LabelTitle.TextXAlignment = Enum.TextXAlignment.Left
         end
+
     return types
 end
 
