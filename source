@@ -584,6 +584,7 @@ function lib:CreateWindow(name)
     end
 
     function types:Dropdown(text, list, callback)
+        local DropFunction = {}
         local droptog = false
         local framesize = 0
         local itemcount = 0
@@ -657,9 +658,8 @@ function lib:CreateWindow(name)
             DropLayout.Parent = DropItemHolder
             DropLayout.SortOrder = Enum.SortOrder.LayoutOrder
 
-            local dropper = {}
 
-            function dropper:Refresh(newList)
+            function DropFunction:Refresh(newList)
                 newList = newList or {}
                     for i,v in next, DropItemHolder:GetChildren() do
                         if v.Name == "Item" then
@@ -845,6 +845,7 @@ function lib:CreateWindow(name)
                 DropItemHolder.CanvasSize = UDim2.new(0, 0, 0, DropLayout.AbsoluteContentSize.Y)
                 tab.CanvasSize = UDim2.new(0, 0, 0, ListLayout.AbsoluteContentSize.Y + 20)
             end
+            return DropFunction
         end
 
         function types:Slider(text, min, max, start, callback)
@@ -1018,8 +1019,7 @@ function lib:CreateWindow(name)
             LabelTitle.TextColor3 = Color3.fromRGB(255, 255, 255)
             LabelTitle.TextSize = 14.000
             LabelTitle.TextXAlignment = Enum.TextXAlignment.Left
-        return dropper
-    end
+        end
     return types
 end
 return lib
