@@ -25,7 +25,7 @@ function lib:CreateWindow(name)
         local success = pcall(function() 
             cursor = Drawing.new("Image")
             cursor.Data = game:HttpGet(cursorimg)
-            cursor.Size = Vector2.new(26, 26)
+            cursor.Size = Vector2.new(28, 28)
             cursor.Visible = UserInputService.MouseEnabled
             cursor.Rounding = 0
             cursor.Position = Vector2.new(mouse.X - 1, mouse.Y + 29)
