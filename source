@@ -392,13 +392,13 @@ function lib:CreateWindow(name, closebind)
                     if toggled == false then
                         TweenService:Create(
                             FrameToggle1,
-                            TweenInfo.new(.35, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+                            TweenInfo.new(.25, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
                             {BackgroundColor3 = Color3.fromRGB(44, 120, 224)}
                         ):Play()
                     else
                         TweenService:Create(
                             FrameToggle1,
-                            TweenInfo.new(.35, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+                            TweenInfo.new(.25, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
                             {BackgroundColor3 = Color3.fromRGB(38,38,38)}
                         ):Play()
                     end
@@ -409,7 +409,7 @@ function lib:CreateWindow(name, closebind)
             if default == true then
                 TweenService:Create(
                     FrameToggle1,
-                    TweenInfo.new(.35, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+                    TweenInfo.new(.25, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
                     {BackgroundColor3 = Color3.fromRGB(44, 120, 224)}
                 ):Play()
                 toggled = not toggled
@@ -776,6 +776,7 @@ function lib:CreateWindow(name, closebind)
                         ):Play()
                         wait(.2)
                         DropItemHolder.CanvasSize = UDim2.new(0, 0, 0, DropLayout.AbsoluteContentSize.Y)
+                        tab.CanvasSize = UDim2.new(0, 0, 0, ListLayout.AbsoluteContentSize.Y)
                     end
                 )
 
