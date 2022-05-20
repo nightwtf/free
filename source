@@ -692,7 +692,7 @@ function lib:CreateWindow(name, closebind)
                             {Rotation = 270}
                         ):Play()
                         wait(.2)
-                        tab.CanvasSize = UDim2.new(0, 0, 0, ListLayout.AbsoluteContentSize.Y + 14)
+                        tab.CanvasSize = UDim2.new(0, 0, 0, ListLayout.AbsoluteContentSize.Y + 20)
                     else
                         Dropdown:TweenSize(
                             UDim2.new(0, 375, 0, 42),
@@ -707,7 +707,7 @@ function lib:CreateWindow(name, closebind)
                             {Rotation = 0}
                         ):Play()
                         wait(.2)
-                        tab.CanvasSize = UDim2.new(0, 0, 0, ListLayout.AbsoluteContentSize.Y + 14)
+                        tab.CanvasSize = UDim2.new(0, 0, 0, ListLayout.AbsoluteContentSize.Y + 20)
                     end
                     droptog = not droptog
                 end
@@ -776,12 +776,12 @@ function lib:CreateWindow(name, closebind)
                         ):Play()
                         wait(.2)
                         DropItemHolder.CanvasSize = UDim2.new(0, 0, 0, DropLayout.AbsoluteContentSize.Y)
-                        tab.CanvasSize = UDim2.new(0, 0, 0, ListLayout.AbsoluteContentSize.Y + 14)
+                        tab.CanvasSize = UDim2.new(0, 0, 0, ListLayout.AbsoluteContentSize.Y + 20)
                     end
                 )
 
                 DropItemHolder.CanvasSize = UDim2.new(0, 0, 0, DropLayout.AbsoluteContentSize.Y)
-                tab.CanvasSize = UDim2.new(0, 0, 0, ListLayout.AbsoluteContentSize.Y + 14)
+                tab.CanvasSize = UDim2.new(0, 0, 0, ListLayout.AbsoluteContentSize.Y + 20)
             end
         end
     return types
