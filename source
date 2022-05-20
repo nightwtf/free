@@ -792,8 +792,6 @@ function lib:CreateWindow(name, closebind)
             callback = callback or function() end
             c = c + 1
 
-            local PresetColor = Color3.fromRGB(44, 120, 224)
-
             local dragging = false
             local Slider = Instance.new("TextButton")
             local SliderCorner = Instance.new("UICorner")
@@ -852,18 +850,18 @@ function lib:CreateWindow(name, closebind)
 
             CurrentValueFrame.Name = "CurrentValueFrame"
             CurrentValueFrame.Parent = SlideFrame
-            CurrentValueFrame.BackgroundColor3 = PresetColor
+            CurrentValueFrame.BackgroundColor3 = Color3.fromRGB(44, 120, 224)
             CurrentValueFrame.BorderSizePixel = 0
             CurrentValueFrame.Size = UDim2.new((start or 0) / max, 0, 0, 3)
 
             SlideCircle.Name = "SlideCircle"
             SlideCircle.Parent = SlideFrame
-            SlideCircle.BackgroundColor3 = PresetColor
+            SlideCircle.BackgroundColor3 = Color3.fromRGB(44, 120, 224)
             SlideCircle.BackgroundTransparency = 1.000
             SlideCircle.Position = UDim2.new((start or 0) / max, -6, -1.30499995, 0)
             SlideCircle.Size = UDim2.new(0, 11, 0, 11)
             SlideCircle.Image = "rbxassetid://3570695787"
-            SlideCircle.ImageColor3 = PresetColor
+            SlideCircle.ImageColor3 = Color3.fromRGB(44, 120, 224)
 
             local function move(input)
                 local pos =
