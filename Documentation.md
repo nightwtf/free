@@ -8,11 +8,10 @@ local InternLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/ni
 
 ## Creating a Window
 ```lua
-local Window = InternLib:CreateWindow("Title of the Library",)
+local Window = InternLib:CreateWindow("Title of the Library")
 
 --[[
-Name = <string> - The name of the UI.
-Rainbow = <bool> - Whether or not the user details shows Premium status or not.
+name = <string> - The name of the UI.
 ]]
 ```
 
@@ -23,20 +22,21 @@ Window:Button("Name of the Button", function()
 end)
 
 --[[
-Name = <string> - The name of the UI.
-function() = <function> - The function of the Button.
+name = <string> - The name of the UI.
+function = <function> - The function of the Button.
 ]]
 ```
 
 ## Creating a Toggle
 ```lua
-Window:Toggle("Name of the Toggle", function(arg)
+Window:Toggle("Name of the Toggle", true, function(arg)
     
 end)
 
 --[[
-Name = <string> - The name of the UI.
-function() = <function> - The function of the toggle.
+name = <string> - The name of the UI.
+bool = <bool> - Default Value for the toggle.
+function = <function> - The function of the toggle.
 arg = <bool> - The value of the toggle.
 ]]
 ```
@@ -51,6 +51,20 @@ Window:Bind()
 Window:Section("Name of the Section")
 
 --[[
-Name = <string> - The name of the UI.
+name = <string> - The name of the UI.
+]]
+```
+
+## Creating a TextBox
+```lua
+Window:TextBox("Name of the TextBox", true, function(arg)
+
+end)
+
+--[[
+name = <string> - The name of the UI.
+bool = <bool> - If the text should disappear after FocusLost.
+function = <function> - The function of the textbox.
+arg = <bool> - The value of the textbox.
 ]]
 ```
