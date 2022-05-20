@@ -905,7 +905,7 @@ function lib:CreateWindow(name, closebind)
                     end
                 end
             )
-            tab.CanvasSize = UDim2.new(0, 0, 0, TabLayout.AbsoluteContentSize.Y+10)
+            tab.CanvasSize = UDim2.new(0, 0, 0, TabLayout.AbsoluteContentSize.Y+20)
             local function PACSJVV_fake_script()
                 local script = Instance.new('LocalScript', Slider)
         
