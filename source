@@ -521,6 +521,7 @@ function lib:CreateWindow(name, closebind)
             local TextboxFrame = Instance.new("Frame")
             local TextboxFrameCorner = Instance.new("UICorner")
             local TextBox = Instance.new("TextBox")
+            local UIStrokeTextbox = Instance.new("UIStroke")
 
             Textbox1.Name = "Textbox"
             Textbox1.LayoutOrder = c
@@ -549,8 +550,13 @@ function lib:CreateWindow(name, closebind)
             TextboxFrame.Name = "TextboxFrame"
             TextboxFrame.Parent = TextboxTitle
             TextboxFrame.BackgroundColor3 = Color3.fromRGB(37, 37, 37)
-            TextboxFrame.Position = UDim2.new(1.28877008, 0, 0.214285716, 0)
+            TextboxFrame.Position = UDim2.new(1.305, 0, 0.5, -11)
             TextboxFrame.Size = UDim2.new(0, 100, 0, 23)
+
+            UIStrokeTextbox.Parent = TextboxFrame
+            UIStrokeTextbox.Thickness = 1
+            UIStrokeTextbox.Color = Color3.fromRGB(52, 52, 52)
+            UIStrokeTextbox.ApplyStrokeMode = "Contextual"
 
             TextboxFrameCorner.CornerRadius = UDim.new(0, 5)
             TextboxFrameCorner.Name = "TextboxFrameCorner"
@@ -650,7 +656,7 @@ function lib:CreateWindow(name, closebind)
             ArrowImg.Parent = DropdownTitle
             ArrowImg.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
             ArrowImg.BackgroundTransparency = 1.000
-            ArrowImg.Position = UDim2.new(1.65240645, 0, 0.190476194, 0)
+            ArrowImg.Position = UDim2.new(1.701, 0, 0.5, -13)
             ArrowImg.Size = UDim2.new(0, 26, 0, 26)
             ArrowImg.Image = "http://www.roblox.com/asset/?id=6034818375"
 
