@@ -3,7 +3,7 @@ This documentation is for the stable use of Intern Library.
 
 ## Booting the Library
 ```lua
-local InternLib = loadstring(game:HttpGet(('[https://raw.githubusercontent.com/nightwtf/private_lib/main/InternV2](https://raw.githubusercontent.com/nightwtf/Intern/main/source)')))()
+local InternLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/nightwtf/Intern/main/source')))()
 ```
 
 ## Creating a Window
