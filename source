@@ -61,6 +61,7 @@ function lib:CreateWindow(name)
     local ListLayout = Instance.new("UIListLayout")
     local Glow = Instance.new("ImageLabel")
 
+    syn.protect_gui(intern_hub)
     intern_hub.Name = "intern"
     intern_hub.Parent = coregui
     intern_hub.ResetOnSpawn = false
