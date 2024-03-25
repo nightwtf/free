@@ -245,7 +245,7 @@ function lib:CreateWindow(name)
         ButtonTitle.TextSize = 14.000
         ButtonTitle.TextXAlignment = Enum.TextXAlignment.Left
 
-        local function QESXMTV_fake_script()
+        
             local script = Instance.new('LocalScript', Button)
         
             script.Parent.MouseEnter:Connect(function()
@@ -259,7 +259,7 @@ function lib:CreateWindow(name)
                 }):Play()
             end)
         end
-        coroutine.wrap(QESXMTV_fake_script)()
+        
 
         Button.MouseButton1Down:Connect(function()
             pcall(callback)
@@ -353,7 +353,7 @@ function lib:CreateWindow(name)
         FrameToggle1Corner.Name = "FrameToggle1Corner"
         FrameToggle1Corner.Parent = FrameToggle1
         
-        local function GKQTG_fake_script()
+        
             local script = Instance.new('LocalScript', Toggle)
     
             script.Parent.MouseEnter:Connect(function()
@@ -367,7 +367,7 @@ function lib:CreateWindow(name)
                 }):Play()
             end)
         end
-        coroutine.wrap(GKQTG_fake_script)()
+        
 
         Toggle.MouseButton1Click:Connect(
                 function()
@@ -476,7 +476,7 @@ function lib:CreateWindow(name)
             end
         )
 
-        local function GKQTG_fake_script()
+        
             local script = Instance.new('LocalScript', Bind)
     
             script.Parent.MouseEnter:Connect(function()
@@ -490,7 +490,7 @@ function lib:CreateWindow(name)
                 }):Play()
             end)
         end
-        coroutine.wrap(GKQTG_fake_script)()
+        
     end
 
     function types:TextBox(text, disapear, callback)
@@ -566,7 +566,7 @@ function lib:CreateWindow(name)
                 end
             )
         
-        local function PACSJVV_fake_script()
+        
             local script = Instance.new('LocalScript', Textbox1)
     
             script.Parent.MouseEnter:Connect(function()
@@ -580,7 +580,7 @@ function lib:CreateWindow(name)
                 }):Play()
             end)
         end
-        coroutine.wrap(PACSJVV_fake_script)()
+        
     end
 
     function types:Dropdown(text, list, callback)
@@ -967,7 +967,7 @@ function lib:CreateWindow(name)
                     end
                 end
             )
-            local function PACSJVV_fake_script()
+            
                 local script = Instance.new('LocalScript', Slider)
         
                 script.Parent.MouseEnter:Connect(function()
@@ -981,7 +981,7 @@ function lib:CreateWindow(name)
                     }):Play()
                 end)
             end
-            coroutine.wrap(PACSJVV_fake_script)()
+            
         end
 
         function types:Label(text)
