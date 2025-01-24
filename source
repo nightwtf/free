@@ -35,6 +35,7 @@ function lib:CreateWindow(name)
     cursor.Position = UDim2.new(0, mouse.X - 1, 0, mouse.Y + 29)
     cursor.Parent = screenGui
 
+
     -- Update the cursor's position based on mouse movement
     UserInputService.InputChanged:Connect(function(input)
         if UserInputService.MouseEnabled then
