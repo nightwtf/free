@@ -12,41 +12,44 @@ local lib = {}
 
 function lib:CreateWindow(name)
     name = name or "<b>INTERN</b> Library"
-    cursor = true
-    cursorimg = "https://tr.rbxcdn.com/35a8c6589acfaed0d7083838b8f6032a/420/420/Decal/Png"
+    local cursorimg = "https://tr.rbxcdn.com/35a8c6589acfaed0d7083838b8f6032a/420/420/Decal/Png"
 
-    for i,v in pairs(game:GetService("CoreGui"):GetChildren()) do
+    -- Remove any existing GUI windows with the same name
+    for _, v in pairs(coregui:GetChildren()) do
         if v.Name == "intern" then
             v:Destroy()
         end
     end
 
-    if cursor and Drawing then
-        local success = pcall(function() 
-            cursor = Drawing.new("Image")
-            cursor.Data = game:HttpGet(cursorimg)
-            cursor.Size = Vector2.new(28, 28)
-            cursor.Visible = UserInputService.MouseEnabled
-            cursor.Rounding = 0
-            cursor.Position = Vector2.new(mouse.X - 1, mouse.Y + 29)
-        end)
-        if success and cursor then
-            UserInputService.InputChanged:Connect(function(input)
-                if UserInputService.MouseEnabled then
-                    if input.UserInputType == Enum.UserInputType.MouseMovement then
-                        cursor.Position = Vector2.new(input.Position.X - 1, input.Position.Y + 29)
-                    end
-                end
-            end)
-            
-            game:GetService("RunService").RenderStepped:Connect(function()
-                UserInputService.OverrideMouseIconBehavior = Enum.OverrideMouseIconBehavior.ForceHide
-                cursor.Visible = UserInputService.MouseEnabled and (UserInputService.MouseIconEnabled or game:GetService("GuiService").MenuIsOpen)
-            end)
-        elseif not success and cursor then
-            cursor:Remove()
+    -- Create ScreenGui to hold the custom cursor
+    local screenGui = Instance.new("ScreenGui")
+    screenGui.Name = "intern"
+    screenGui.Parent = player.PlayerGui
+
+    -- Create the cursor ImageLabel
+    local cursor = Instance.new("ImageLabel")
+    cursor.Name = "CustomCursor"
+    cursor.Size = UDim2.new(0, 28, 0, 28)
+    cursor.Image = cursorimg
+    cursor.Visible = UserInputService.MouseEnabled
+    cursor.Position = UDim2.new(0, mouse.X - 1, 0, mouse.Y + 29)
+    cursor.Parent = screenGui
+
+    -- Update the cursor's position based on mouse movement
+    UserInputService.InputChanged:Connect(function(input)
+        if UserInputService.MouseEnabled then
+            if input.UserInputType == Enum.UserInputType.MouseMovement then
+                cursor.Position = UDim2.new(0, input.Position.X - 1, 0, input.Position.Y + 29)
+            end
         end
-    end
+    end)
+
+    -- Hide the default mouse icon and ensure the custom cursor is visible
+    RunService.RenderStepped:Connect(function()
+        UserInputService.OverrideMouseIconBehavior = Enum.OverrideMouseIconBehavior.ForceHide
+        cursor.Visible = UserInputService.MouseEnabled and (UserInputService.MouseIconEnabled or game:GetService("GuiService").MenuIsOpen)
+    end)
+end
 
     local intern_hub = Instance.new("ScreenGui")
     local main_holder = Instance.new("Frame")
