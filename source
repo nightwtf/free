@@ -12,7 +12,6 @@ local lib = {}
 
 function lib:CreateWindow(name)
     name = name or "<b>INTERN</b> Library"
-    local cursorimg = "https://tr.rbxcdn.com/35a8c6589acfaed0d7083838b8f6032a/420/420/Decal/Png"
 
     -- Remove any existing GUI windows with the same name
     for _, v in pairs(coregui:GetChildren()) do
@@ -21,67 +20,26 @@ function lib:CreateWindow(name)
         end
     end
 
-    -- Create ScreenGui to hold the custom cursor
-    local screenGui = Instance.new("ScreenGui")
-    screenGui.Name = "intern"
-    screenGui.Parent = player.PlayerGui
-
-    -- Create the cursor ImageLabel
-    local cursor = Instance.new("ImageLabel")
-    cursor.Name = "CustomCursor"
-    cursor.Size = UDim2.new(0, 28, 0, 28)
-    cursor.Image = cursorimg
-    cursor.Visible = UserInputService.MouseEnabled
-    cursor.Position = UDim2.new(0, mouse.X - 1, 0, mouse.Y + 29)
-    cursor.Parent = screenGui
-
-
-    -- Update the cursor's position based on mouse movement
-    UserInputService.InputChanged:Connect(function(input)
-        if UserInputService.MouseEnabled then
-            if input.UserInputType == Enum.UserInputType.MouseMovement then
-                cursor.Position = UDim2.new(0, input.Position.X - 1, 0, input.Position.Y + 29)
-            end
-        end
-    end)
-
-    -- Hide the default mouse icon and ensure the custom cursor is visible
-    RunService.RenderStepped:Connect(function()
-        UserInputService.OverrideMouseIconBehavior = Enum.OverrideMouseIconBehavior.ForceHide
-        cursor.Visible = UserInputService.MouseEnabled and (UserInputService.MouseIconEnabled or game:GetService("GuiService").MenuIsOpen)
-    end)
-end
-
+    -- Create the main ScreenGui
     local intern_hub = Instance.new("ScreenGui")
-    local main_holder = Instance.new("Frame")
-    local main_bg = Instance.new("Frame")
-    local UICorner = Instance.new("UICorner")
-    local texture = Instance.new("ImageLabel")
-    local smoke = Instance.new("ImageLabel")
-    local ui_name = Instance.new("TextLabel")
-    local UIGradient = Instance.new("UIGradient")
-    local smoke1 = Instance.new("ImageLabel")
-    local tab = Instance.new("ScrollingFrame")
-    local ListLayout = Instance.new("UIListLayout")
-    local Glow = Instance.new("ImageLabel")
-
     intern_hub.Name = "intern"
     intern_hub.Parent = coregui
     intern_hub.ResetOnSpawn = false
 
+    -- Main container frame
+    local main_holder = Instance.new("Frame")
     main_holder.Name = "main_holder"
     main_holder.Parent = intern_hub
     main_holder.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
-    main_holder.BackgroundTransparency = 1.000
-    main_holder.BorderSizePixel = 0
+    main_holder.BackgroundTransparency = 1
     main_holder.Position = UDim2.new(0.5, -200, 0.5, -150)
     main_holder.Size = UDim2.new(0, 400, 0, 300)
 
+    -- Glow effect
+    local Glow = Instance.new("ImageLabel")
     Glow.Name = "Glow"
     Glow.Parent = main_holder
-    Glow.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    Glow.BackgroundTransparency = 1.000
-    Glow.BorderSizePixel = 0
+    Glow.BackgroundTransparency = 1
     Glow.Position = UDim2.new(0, -15, 0, -15)
     Glow.Size = UDim2.new(1, 30, 1, 30)
     Glow.ZIndex = 0
@@ -90,117 +48,92 @@ end
     Glow.ScaleType = Enum.ScaleType.Slice
     Glow.SliceCenter = Rect.new(20, 20, 280, 280)
 
+    -- Background frame
+    local main_bg = Instance.new("Frame")
     main_bg.Name = "main_bg"
     main_bg.Parent = main_holder
     main_bg.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
-    main_bg.BorderColor3 = Color3.fromRGB(27, 42, 53)
     main_bg.BorderSizePixel = 0
     main_bg.ClipsDescendants = true
     main_bg.Position = UDim2.new(0.5, -200, 0.5, -150)
     main_bg.Size = UDim2.new(0, 400, 0, 300)
 
+    local UICorner = Instance.new("UICorner")
     UICorner.CornerRadius = UDim.new(0, 3)
     UICorner.Parent = main_bg
 
-    texture.Name = "texture"
-    texture.Parent = main_bg
-    texture.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
-    texture.BackgroundTransparency = 1.000
-    texture.BorderSizePixel = 0
-    texture.Size = UDim2.new(1, 0, 1, 0)
-    texture.ZIndex = 0
-    texture.Image = "rbxassetid://7032373975"
-    texture.ImageTransparency = 0.750
-
-    smoke.Name = "smoke"
-    smoke.Parent = main_bg
-    smoke.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    smoke.BackgroundTransparency = 1.000
-    smoke.BorderColor3 = Color3.fromRGB(27, 42, 53)
-    smoke.Position = UDim2.new(-0.87604171, 0, -0.567592561, 0)
-    smoke.Size = UDim2.new(1.3834002, 0, 1.3834002, 0)
-    smoke.Image = "rbxassetid://1853193216"
-    smoke.ImageTransparency = 0.980
-
+    -- Section text
+    local ui_name = Instance.new("TextLabel")
     ui_name.Name = "ui_name"
     ui_name.Parent = main_bg
     ui_name.AnchorPoint = Vector2.new(0.5, 0.5)
-    ui_name.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    ui_name.BackgroundTransparency = 1.000
-    ui_name.BorderSizePixel = 0
-    ui_name.Position = UDim2.new(0.157270208, 0, 0.119999997, -17)
+    ui_name.BackgroundTransparency = 1
+    ui_name.Position = UDim2.new(0.157, 0, 0.12, -17)
     ui_name.Size = UDim2.new(0, 125, 0, 35)
     ui_name.Font = Enum.Font.Gotham
-    ui_name.Text = ""..tostring(name)
-    ui_name.TextColor3 = Color3.fromRGB(117, 117, 117) 
-    ui_name.TextSize = 14.000
+    ui_name.Text = tostring(name)
+    ui_name.TextColor3 = Color3.fromRGB(117, 117, 117)
+    ui_name.TextSize = 14
     ui_name.RichText = true
 
-    UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(0, 0, 0)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(255, 255, 255))}
-    UIGradient.Offset = Vector2.new(0.200000003, 0.400000006)
+    local UIGradient = Instance.new("UIGradient")
+    UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0, Color3.fromRGB(0, 0, 0)), ColorSequenceKeypoint.new(1, Color3.fromRGB(255, 255, 255))}
     UIGradient.Rotation = 270
     UIGradient.Parent = ui_name
 
-    smoke1.Name = "smoke1"
-    smoke1.Parent = main_bg
-    smoke1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    smoke1.BackgroundTransparency = 1.000
-    smoke1.BorderColor3 = Color3.fromRGB(27, 42, 53)
-    smoke1.Position = UDim2.new(0.57396549, 0, -0.0463237613, 0)
-    smoke1.Size = UDim2.new(1.53799033, 0, 1.53799045, 0)
-    smoke1.Image = "rbxassetid://1853193216"
-    smoke1.ImageTransparency = 0.980
-
+    -- Tab frame
+    local tab = Instance.new("ScrollingFrame")
     tab.Name = "tab"
     tab.Parent = main_bg
     tab.Active = true
-    tab.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    tab.BackgroundTransparency = 1.000
-    tab.BorderSizePixel = 0
-    tab.Position = UDim2.new(0.5, -195, 0.122, 0)
+    tab.BackgroundTransparency = 1
+    tab.Position = UDim2.new(0.5, -195, 0.12, 0)
     tab.Size = UDim2.new(0, 390, 0, 263)
     tab.ScrollBarThickness = 0
 
-    ListLayout.Name = "ListLayout"
+    local ListLayout = Instance.new("UIListLayout")
     ListLayout.Parent = tab
     ListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
     ListLayout.SortOrder = Enum.SortOrder.LayoutOrder
     ListLayout.Padding = UDim.new(0, 6)
 
-    tab.CanvasSize = UDim2.new(0,0,0,tab.ListLayout.AbsoluteContentSize.Y)
-	tab.ChildAdded:Connect(function()
-		tab.CanvasSize = UDim2.new(0,0,0,tab.ListLayout.AbsoluteContentSize.Y + 55 + tab.ListLayout.Padding.Offset)
-	end)
+    -- Automatically adjust the size of the tab's content
+    tab.CanvasSize = UDim2.new(0, 0, 0, tab.ListLayout.AbsoluteContentSize.Y)
+    tab.ChildAdded:Connect(function()
+        tab.CanvasSize = UDim2.new(0, 0, 0, tab.ListLayout.AbsoluteContentSize.Y + 55 + tab.ListLayout.Padding.Offset)
+    end)
 
-    local dragger = {}; do
-        local mouse        = game:GetService("Players").LocalPlayer:GetMouse();
-        local inputService = game:GetService('UserInputService');
-        local heartbeat    = game:GetService("RunService").Heartbeat;
-        -- // credits to Ririchi / Inori for this cute drag function :)
+    -- Dragger functionality
+    local dragger = {}
+    function dragger.new(frame)
+        local mouse = game:GetService("Players").LocalPlayer:GetMouse()
+        local inputService = game:GetService('UserInputService')
+        local heartbeat = game:GetService("RunService").Heartbeat
+
         function dragger.new(frame)
             local s, event = pcall(function()
                 return frame.MouseEnter
             end)
-    
+
             if s then
-                frame.Active = true;
-                
-                event:connect(function()
-                    local input = frame.InputBegan:connect(function(key)
+                frame.Active = true
+
+                event:Connect(function()
+                    local input = frame.InputBegan:Connect(function(key)
                         if key.UserInputType == Enum.UserInputType.MouseButton1 then
-                            local objectPosition = Vector2.new(mouse.X - frame.AbsolutePosition.X, mouse.Y - frame.AbsolutePosition.Y);
-                            while heartbeat:wait() and inputService:IsMouseButtonPressed(Enum.UserInputType.MouseButton1) do
+                            local objectPosition = Vector2.new(mouse.X - frame.AbsolutePosition.X, mouse.Y - frame.AbsolutePosition.Y)
+                            while heartbeat:Wait() and inputService:IsMouseButtonPressed(Enum.UserInputType.MouseButton1) do
                                 pcall(function()
-                                    frame:TweenPosition(UDim2.new(0, mouse.X - objectPosition.X + (frame.Size.X.Offset * frame.AnchorPoint.X), 0, mouse.Y - objectPosition.Y + (frame.Size.Y.Offset * frame.AnchorPoint.Y)), 'Out', 'Linear', 0.1, true);
+                                    frame:TweenPosition(UDim2.new(0, mouse.X - objectPosition.X + (frame.Size.X.Offset * frame.AnchorPoint.X), 0, mouse.Y - objectPosition.Y + (frame.Size.Y.Offset * frame.AnchorPoint.Y)), 'Out', 'Linear', 0.1, true)
                                 end)
                             end
                         end
                     end)
-    
-                    local leave;
-                    leave = frame.MouseLeave:connect(function()
-                        input:disconnect();
-                        leave:disconnect();
+
+                    local leave
+                    leave = frame.MouseLeave:Connect(function()
+                        input:Disconnect()
+                        leave:Disconnect()
                     end)
                 end)
             end
@@ -208,20 +141,15 @@ end
     end
 
     dragger.new(main_holder)
-    
-    local types = {}
 
-	local c = 0
-
-    function types:Button(text, callback)
+    -- Button creation function
+    local c = 0
+    function lib:Button(text, callback)
         callback = callback or function() end
-		text = text or "Button"
-		c = c + 1
+        text = text or "Button"
+        c = c + 1
 
         local Button = Instance.new("TextButton")
-        local ButtonCorner = Instance.new("UICorner")
-        local ButtonTitle = Instance.new("TextLabel")
-
         Button.Name = "Button"
         Button.Parent = tab
         Button.BackgroundColor3 = Color3.fromRGB(34, 34, 34)
@@ -230,45 +158,44 @@ end
         Button.Font = Enum.Font.SourceSans
         Button.Text = ""
         Button.TextColor3 = Color3.fromRGB(0, 0, 0)
-        Button.TextSize = 14.000
+        Button.TextSize = 14
         Button.LayoutOrder = c
 
+        local ButtonCorner = Instance.new("UICorner")
         ButtonCorner.CornerRadius = UDim.new(0, 5)
-        ButtonCorner.Name = "ButtonCorner"
         ButtonCorner.Parent = Button
 
+        local ButtonTitle = Instance.new("TextLabel")
         ButtonTitle.Name = "ButtonTitle"
         ButtonTitle.Parent = Button
-        ButtonTitle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-        ButtonTitle.BackgroundTransparency = 1.000
-        ButtonTitle.Position = UDim2.new(0.0358126722, 0, 0, 0)
+        ButtonTitle.BackgroundTransparency = 1
+        ButtonTitle.Position = UDim2.new(0.035, 0, 0, 0)
         ButtonTitle.Size = UDim2.new(0, 187, 0, 42)
         ButtonTitle.Font = Enum.Font.Gotham
         ButtonTitle.Text = text
         ButtonTitle.TextColor3 = Color3.fromRGB(255, 255, 255)
-        ButtonTitle.TextSize = 14.000
+        ButtonTitle.TextSize = 14
         ButtonTitle.TextXAlignment = Enum.TextXAlignment.Left
-
-        
-            local script = Instance.new('LocalScript', Button)
-        
-            script.Parent.MouseEnter:Connect(function()
-                game:GetService("TweenService"):Create(script.Parent, TweenInfo.new(0.15), {
-                    BackgroundColor3 = Color3.fromRGB(38,38,38)
-                }):Play()
-            end)
-            script.Parent.MouseLeave:Connect(function()
-                game:GetService("TweenService"):Create(script.Parent, TweenInfo.new(0.15), {
-                    BackgroundColor3 = Color3.fromRGB(34,34,34)
-                }):Play()
-            end)
-        end
-        
 
         Button.MouseButton1Down:Connect(function()
             pcall(callback)
         end)
+
+        -- Button hover effects
+        local script = Instance.new('LocalScript', Button)
+        script.Parent.MouseEnter:Connect(function()
+            game:GetService("TweenService"):Create(script.Parent, TweenInfo.new(0.15), {
+                BackgroundColor3 = Color3.fromRGB(38,38,38)
+            }):Play()
+        end)
+
+        script.Parent.MouseLeave:Connect(function()
+            game:GetService("TweenService"):Create(script.Parent, TweenInfo.new(0.15), {
+                BackgroundColor3 = Color3.fromRGB(34,34,34)
+            }):Play()
+        end)
     end
+end
 
     function types:Section(text)
         text = text or "Section"
