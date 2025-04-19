@@ -2,7 +2,7 @@ local UserInputService = game:GetService("UserInputService")
 local TweenService = game:GetService("TweenService")
 local RunService = game:GetService("RunService")
 local players = game:GetService("Players")
-local coregui = Players.LocalPlayer.PlayerGui
+local coregui = players.LocalPlayer.PlayerGui
 local ProtectGui = protectgui or (syn and syn.protect_gui) or (function() end);
 
 local player = players.LocalPlayer
