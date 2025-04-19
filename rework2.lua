@@ -142,6 +142,7 @@ function lib:CreateWindow(name)
 
     dragger.new(main_holder)
 
+    local types = {}
 
     -- Button creation function
     local c = 0
