@@ -11,6 +11,7 @@ local camera = game.Workspace.CurrentCamera
 local lib = {}
 
 function lib:CreateWindow(name)
+    local types = {}
     name = name or "<b>INTERN</b> Library"
 
     -- Remove any existing GUI windows with the same name
