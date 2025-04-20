@@ -3,7 +3,6 @@ local TweenService = game:GetService("TweenService")
 local RunService = game:GetService("RunService")
 local players = game:GetService("Players")
 local coregui = players.LocalPlayer.PlayerGui
-local ProtectGui = protectgui or (syn and syn.protect_gui) or (function() end);
 
 local player = players.LocalPlayer
 local mouse = player:GetMouse()
@@ -23,7 +22,6 @@ function lib:CreateWindow(name)
 
     -- Create the main ScreenGui
     local intern_hub = Instance.new("ScreenGui")
-ProtectGui(intern_hub);
     intern_hub.Name = "intern"
     intern_hub.Parent = coregui
     intern_hub.ResetOnSpawn = false
